@@ -68,7 +68,7 @@ class NodesProvider with ChangeNotifier {
   }
 
   Future<List<Block>> getBlocksFromNode(String urlNode) async {
-    //TODO: Implement the method that get the blocks details
+    //TODO: Implement the method that get the blocks details here
     return List.empty();
   }
 

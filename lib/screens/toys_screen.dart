@@ -53,7 +53,7 @@ class _ToysScreenState extends State<ToysScreen> {
               expansionCallback: (int index, bool isExpanded) {
                 setState(() {
                   _items[index].isExpanded = !_items[index].isExpanded;
-                  //TODO: Implement the blocks widget
+                  //TODO: Implement the call to blocks widget here
                 });
               },
               children: _items.map((NodeElement item) {
