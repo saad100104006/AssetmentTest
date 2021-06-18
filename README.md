@@ -1,3 +1,6 @@
+![fullStacklabslogo](https://user-images.githubusercontent.com/80694339/122600897-17bce980-d036-11eb-88e2-e23529c82ba8.png)
+
+
 # Complete Flutter Code Challenge
 
 This is the complete FullStack labs Code Challenge
