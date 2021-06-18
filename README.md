@@ -1,4 +1,4 @@
-# Complete Flutter Code Challenge
+# Flutter Code Challenge
 
 This is the complete FullStack labs Code Challenge
 
