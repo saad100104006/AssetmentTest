@@ -6,6 +6,7 @@ This is the FullStack labs Code Challenge
 
 - [Install Flutter](https://flutter.io/setup/)
 - Clone this repo
+- `cd flutter_code_challenge`
 - run `flutter create .` on your terminal
 - Run `flutter run`
 
