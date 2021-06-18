@@ -1,6 +1,6 @@
 # Flutter Code Challenge
 
-This is the complete FullStack labs Code Challenge
+This is the FullStack labs Code Challenge
 
 ## Getting Started
 
