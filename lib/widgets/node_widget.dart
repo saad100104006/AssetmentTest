@@ -11,6 +11,11 @@ class NodeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var colorDot = node.online ? Colors.green : Colors.red;
     var textStatus = node.online ? "ONLINE" : "OFFLINE";
+    var textStyle = node.online
+        ? const TextStyle(fontSize: 10, fontWeight: FontWeight.bold)
+        : const TextStyle(
+            fontSize: 10, color: Color.fromRGBO(138, 144, 147, 1.0));
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +41,7 @@ class NodeWidget extends StatelessWidget {
                 ),
                 Text(
                   textStatus,
-                  style: const TextStyle(fontSize: 10),
+                  style: textStyle,
                 ),
               ],
             )
