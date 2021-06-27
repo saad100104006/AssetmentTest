@@ -3,8 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_challenge/models/node_element.dart';
 import 'package:flutter_challenge/models/node_model.dart';
 import 'package:flutter_challenge/providers/nodes_provider.dart';
+import 'package:flutter_challenge/widgets/block_widget.dart';
 import 'package:flutter_challenge/widgets/node_widget.dart';
 import 'package:provider/provider.dart';
+
+import '../models/blocks_models.dart';
 
 class ToysScreen extends StatefulWidget {
   const ToysScreen({Key? key}) : super(key: key);
@@ -20,14 +23,8 @@ class _ToysScreenState extends State<ToysScreen> {
     return await nodesProvider.getInitialNodes();
   }
 
-  Widget _buildBlankBlockTile() {
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Text(
-        'Blank Block',
-        textAlign: TextAlign.left,
-      ),
-    );
+  Widget _buildBlockTileList(List<Block> blocks) {
+    return BlockListWidget(blocks:blocks,);
   }
 
   List<NodeElement> _items = [];
@@ -38,7 +35,7 @@ class _ToysScreenState extends State<ToysScreen> {
         return NodeElement(
           isExpanded: false, // isExpanded ?
           node: item,
-          body: _buildBlankBlockTile(), // body
+          body: _buildBlockTileList(item.blocks), // body
         );
       }).toList();
     }
@@ -65,7 +62,13 @@ class _ToysScreenState extends State<ToysScreen> {
                     );
                   },
                   isExpanded: item.isExpanded,
-                  body: item.body,
+                  body: Column(
+                    children: [
+                      item.body,
+                      SizedBox(height: 5,)
+                    ],
+
+                  ),
                 );
               }).toList(),
             ))

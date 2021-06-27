@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_challenge/providers/nodes_provider.dart';
 import 'package:flutter_challenge/screens/toys_screen.dart';
+import 'package:flutter_challenge/widgets/block_widget.dart';
 import 'package:flutter_challenge/widgets/node_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
@@ -66,5 +67,22 @@ void main() {
     expect(find.byType(NodeWidget), findsNWidgets(4));
   });
 
-  //TODO: Implement test cases related to the blocks implementation
+  //Test block for 4 nodes
+
+  testWidgets('verify 4 block in List widger', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      ChangeNotifierProvider<NodesProvider>(
+        create: (_) => NodesProvider(),
+        child: const MediaQuery(
+          data: MediaQueryData(),
+          child: MaterialApp(
+            home: ToysScreen(),
+          ),
+        ),
+      ),
+    );
+
+    await tester.pumpAndSettle();
+    expect(find.byType(BlockListWidget), findsNWidgets(4));
+  });
 }

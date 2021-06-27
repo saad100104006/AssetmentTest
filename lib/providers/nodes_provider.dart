@@ -19,6 +19,7 @@ class NodesProvider with ChangeNotifier {
           url: 'https://thawing-springs-53971.herokuapp.com',
           online: false,
           name: 'Node 1',
+          blocks: [],
           loading: false),
     );
     _nodes.add(
@@ -26,6 +27,7 @@ class NodesProvider with ChangeNotifier {
           url: 'https://secret-lowlands-62331.herokuapp.com',
           online: false,
           name: 'Node 2',
+          blocks: [],
           loading: false),
     );
     _nodes.add(
@@ -33,6 +35,7 @@ class NodesProvider with ChangeNotifier {
           url: 'https://calm-anchorage-82141.herokuapp.com',
           online: false,
           name: 'Node 3',
+          blocks: [],
           loading: false),
     );
     _nodes.add(
@@ -40,6 +43,7 @@ class NodesProvider with ChangeNotifier {
           url: 'http://localhost:3002',
           online: false,
           name: 'Node 4',
+          blocks: [],
           loading: false),
     );
   }
@@ -58,6 +62,21 @@ class NodesProvider with ChangeNotifier {
         );
         if (response.statusCode == 200) {
           node.updateStatus(json.decode(response.body)['node_name']);
+        }
+
+
+        //getting the response from each block enpoint
+
+        final blockResponse =
+        await http.get(Uri.parse(_getBlockUrlFromNode(node.url))).timeout(
+          const Duration(seconds: 10),
+          onTimeout: (){
+            throw Exception('timeout');
+          },
+        );
+
+        if(blockResponse.statusCode == 200){
+          node.updateBlock(blocResultFromJson(blockResponse.body).data);
         }
 
         _nodes[i] = node;
@@ -79,4 +98,5 @@ class NodesProvider with ChangeNotifier {
   String _getBlockUrlFromNode(String urlNode) {
     return '$urlNode/api/v1/blocks';
   }
+
 }
